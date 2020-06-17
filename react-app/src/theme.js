@@ -1,31 +1,48 @@
 import { createMuiTheme } from "@material-ui/core/styles";
+import colors from "./colors";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#6a1b5d",
+      main: colors.primary,
     },
     secondary: {
-      main: "#e98a15",
+      main: colors.secondary,
+      contrastText: colors.white,
     },
     black: {
-      main: "#012622",
+      main: colors.black,
     },
     grey: {
-      main: "#54494b",
+      main: colors.grey,
     },
     white: {
-      main: "#ece5f0",
+      main: colors.white,
     },
     info: {
-      main: "#256eff",
+      main: colors.info,
     },
     success: {
-      main: "#52a35e",
+      main: colors.success,
     },
     error: {
-      main: "#f50000",
+      main: colors.error,
     },
+  },
+  typography: {
+    fontFamily: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Righteous"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      '"Red Hat Text"',
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
   },
 });
 

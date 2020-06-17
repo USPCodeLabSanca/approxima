@@ -1,22 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import * as serviceWorker from "./serviceWorker";
-import { ThemeProvider } from "@material-ui/styles";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/styles";
+
 import theme from "./theme";
+import * as serviceWorker from "./serviceWorker";
 
 //pages
-import Home from "./views/Home";
-import Login from "./views/Login";
+import Pages from "./pages";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
+          <Route path="/" exact component={Pages.Home} />
+          <Route path="/entrar" component={Pages.Login} />
+          <Route path="/cadastrar" component={Pages.Register} />
           <Redirect to="/" />
         </Switch>
       </BrowserRouter>
