@@ -9,6 +9,13 @@ import * as serviceWorker from "./serviceWorker";
 //pages
 import Pages from "./pages";
 
+// TIRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
+import EmailForm from "./components/EmailForm";
+import UserInfoForm from "./components/UserInfoForm";
+import UniversityForm from "./components/UniversityForm";
+import ContactInfoForm from "./components/ContactInfoForm";
+import CategorySelectionForm from "./components/CategorySelectionForm";
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
@@ -17,6 +24,12 @@ ReactDOM.render(
           <Route path="/" exact component={Pages.Home} />
           <Route path="/login" component={Pages.Login} />
           <Route path="/cadastro" component={Pages.Register} />
+          {/* GAMBIARRA */}
+          <Route path="/1" component={EmailForm} />
+          <Route path="/2" component={UserInfoForm} />
+          <Route path="/3" component={UniversityForm} />
+          <Route path="/4" component={ContactInfoForm} />
+          <Route path="/5" component={CategorySelectionForm} />
           <Redirect to="/" />
         </Switch>
       </BrowserRouter>

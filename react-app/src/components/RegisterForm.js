@@ -31,13 +31,7 @@ export default function RegisterForm() {
   const classes = useStyles();
   const theme = useTheme();
 
-  const steps = [
-    "Primeiras infos",
-    "Sobre você",
-    "Sobre sua faculdade",
-    "Contato",
-    "Seus interesses",
-  ];
+  const numSteps = 5;
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -66,7 +60,7 @@ export default function RegisterForm() {
 
   return (
     <Card className={classes.card}>
-      {activeStep === steps.length ? (
+      {activeStep === numSteps ? (
         <>
           <Dialog open fullWidth maxWidth="sm">
             <AppBar title="Cadastro concluído" />
@@ -83,7 +77,7 @@ export default function RegisterForm() {
 
           <MobileStepper
             variant="progress"
-            steps={steps.length}
+            steps={numSteps}
             position="static"
             activeStep={activeStep}
             className={classes.stepper}

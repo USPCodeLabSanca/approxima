@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { IconButton } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
@@ -9,11 +9,11 @@ import RegisterForm from "../components/RegisterForm";
 function Register() {
   return (
     <>
-      <Link to="/">
+      <RouterLink to="/">
         <IconButton color="secondary" aria-label="back_home" component="span">
           <ArrowBackIcon fontSize="large" />
         </IconButton>
-      </Link>
+      </RouterLink>
       <RegisterForm></RegisterForm>
     </>
   );

@@ -6,12 +6,11 @@ import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
-import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+// import DateFnsUtils from "@date-io/date-fns";
+// import {
+//   MuiPickersUtilsProvider,
+//   KeyboardDatePicker,
+// } from "@material-ui/pickers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +28,7 @@ export default function UserInfoForm() {
   // const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
   return (
-    <React.Fragment>
+    <>
       <Typography variant="h6" gutterBottom>
         Sobre você
       </Typography>
@@ -44,7 +43,7 @@ export default function UserInfoForm() {
             autoComplete="given-name"
           />
         </Grid>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
@@ -80,7 +79,7 @@ export default function UserInfoForm() {
             autoComplete="given-bday"
             type="date"
           />
-        </Grid>
+        </Grid> */}
         <Grid>
           <input
             accept="image/*"
@@ -100,9 +99,12 @@ export default function UserInfoForm() {
         </Grid>
         <Grid item xs={12}>
           <TextField
+            required
             id="mini-bio"
             name="mini-bio"
             label="Biografia (resumo)"
+            helperText="Conte um pouco sobre você em poucas palavras.
+                Essa será sua primeira impressão para os outros usuários do app!"
             fullWidth
           />
         </Grid>
@@ -110,13 +112,13 @@ export default function UserInfoForm() {
           <TextField
             id="bio"
             name="bio"
-            label="Biografia"
-            helperText="Se este campo for deixado em branco, utilizaremos o resumo da sua bio como sua bio completa (isso pode ser mudado depois nas configurações)."
+            label="Biografia (completa)"
+            helperText="Conte sobre você o quanto quiser, sem se importar com o limite de caracteres!
+                Caso não deseje, é só deixar esse campo em branco (iremos usar a sua biografia resumida no lugar)."
             fullWidth
-            disabled
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </>
   );
 }

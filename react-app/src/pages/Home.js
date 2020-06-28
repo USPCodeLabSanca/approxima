@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Grid } from "@material-ui/core";
 
@@ -41,18 +41,18 @@ function Home() {
     >
       <img src={logo} alt="approxima logo" />
       <Grid item>
-        <Link to="/login">
+        <RouterLink to="/login">
           <Button variant="contained" color="secondary" size="large">
             Login
           </Button>
-        </Link>
+        </RouterLink>
       </Grid>
       <Grid item>
-        <Link to="/cadastro">
+        <RouterLink to="/cadastro">
           <Button variant="contained" color="secondary" size="large">
             Cadastre-se
           </Button>
-        </Link>
+        </RouterLink>
       </Grid>
     </Grid>
   );
