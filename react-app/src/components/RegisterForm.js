@@ -1,64 +1,43 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
-import {
-  Card,
-  MobileStepper,
-  Button,
-  Typography,
-  Divider,
-} from "@material-ui/core";
+import { Card, MobileStepper, Button, Dialog, AppBar } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 // Custom
+import EmailForm from "./EmailForm";
 import UserInfoForm from "./UserInfoForm";
 import UniversityForm from "./UniversityForm";
 import ContactInfoForm from "./ContactInfoForm";
+import CategorySelectionForm from "./CategorySelectionForm";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    margin: theme.spacing(2),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
+    // margin: theme.spacing(2),
+    // padding: theme.spacing(2),
+    // [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+    //   marginTop: theme.spacing(6),
+    //   marginBottom: theme.spacing(6),
+    //   padding: theme.spacing(3),
+    // },
   },
   stepper: {
-    padding: theme.spacing(3, 0, 5),
+    // padding: theme.spacing(3, 0, 5),
   },
 }));
-
-/*
-  nome*, 
-  email*,
-  senha*,
-  bio (resumo) [até 140 caracteres]*,
-  bio [checkbox: usar a mesma que a versao de resumo] (default será manter a mesma),
-  upload de foto,
-  idade, 
-
-  campus* -> 
-  instituto* -> 
-  nível* (graduação, mestrado, doutorado) -> 
-  curso*, 
-  ano de ingresso,
-  
-  cidade de origem,
-  cidade atual* (talvez dar opcao de pegar por gps), 
-  idiomas* (maiszinho para adicionar),
-  contato* (maiszinho para adicionar),
-
-  categorias
-*/
 
 export default function RegisterForm() {
   const [activeStep, setActiveStep] = useState(0);
   const classes = useStyles();
   const theme = useTheme();
 
-  const steps = ["Sobre você", "Sobre sua faculdade", "Contato"];
+  const steps = [
+    "Primeiras infos",
+    "Sobre você",
+    "Sobre sua faculdade",
+    "Contato",
+    "Seus interesses",
+  ];
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -71,11 +50,15 @@ export default function RegisterForm() {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <UserInfoForm />;
+        return <EmailForm />;
       case 1:
-        return <UniversityForm />;
+        return <UserInfoForm />;
       case 2:
+        return <UniversityForm />;
+      case 3:
         return <ContactInfoForm />;
+      case 4:
+        return <CategorySelectionForm />;
       default:
         throw new Error("Unknown step");
     }
@@ -85,24 +68,21 @@ export default function RegisterForm() {
     <Card className={classes.card}>
       {activeStep === steps.length ? (
         <>
-          <Typography component="h1" variant="h5" align="center" gutterBottom>
-            Muito obrigado por se registrar!
-          </Typography>
-          <Divider variant="middle" />
-          <Typography variant="subtitle1">
-            Para começar a usar o app, é necessário confirmar seu e-mail.
-            [acessar meu email]
-          </Typography>
+          <Dialog open fullWidth maxWidth="sm">
+            <AppBar title="Cadastro concluído" />
+            <h1>Muito obrigado por se registrar!</h1>
+            <p>
+              Para começar a usar o app, é necessário confirmar seu e-mail.
+              [acessar meu email]
+            </p>
+          </Dialog>
         </>
       ) : (
         <>
-          <Typography component="h1" variant="h5" align="center" gutterBottom>
-            Cadastro
-          </Typography>
-          <Divider variant="middle" />
           {getStepContent(activeStep)}
+
           <MobileStepper
-            variant="dots"
+            variant="progress"
             steps={steps.length}
             position="static"
             activeStep={activeStep}
@@ -113,7 +93,7 @@ export default function RegisterForm() {
                 onClick={handleNext}
                 // disabled={activeStep === 2}
               >
-                Next
+                Avançar
                 {theme.direction === "rtl" ? (
                   <KeyboardArrowLeft />
                 ) : (
@@ -132,7 +112,7 @@ export default function RegisterForm() {
                 ) : (
                   <KeyboardArrowLeft />
                 )}
-                Back
+                Voltar
               </Button>
             }
           />
