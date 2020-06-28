@@ -11,9 +11,9 @@ import {
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 // Custom
-import AddressForm from "./AddressForm";
-import PaymentForm from "./PaymentForm";
-import Review from "./Review";
+import UserInfoForm from "./UserInfoForm";
+import UniversityForm from "./UniversityForm";
+import ContactInfoForm from "./ContactInfoForm";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   bio (resumo) [até 140 caracteres]*,
   bio [checkbox: usar a mesma que a versao de resumo] (default será manter a mesma),
   upload de foto,
+  idade, 
 
   campus* -> 
   instituto* -> 
@@ -44,19 +45,20 @@ const useStyles = makeStyles((theme) => ({
   curso*, 
   ano de ingresso,
   
-  idade, 
-  cidade de origem*,
-  cidade atual, 
+  cidade de origem,
+  cidade atual* (talvez dar opcao de pegar por gps), 
   idiomas* (maiszinho para adicionar),
   contato* (maiszinho para adicionar),
+
+  categorias
 */
 
 export default function RegisterForm() {
-  const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
+  const classes = useStyles();
   const theme = useTheme();
 
-  const steps = ["Shipping address", "Payment details", "Review your order"];
+  const steps = ["Sobre você", "Sobre sua faculdade", "Contato"];
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -69,11 +71,11 @@ export default function RegisterForm() {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <AddressForm />;
+        return <UserInfoForm />;
       case 1:
-        return <PaymentForm />;
+        return <UniversityForm />;
       case 2:
-        return <Review />;
+        return <ContactInfoForm />;
       default:
         throw new Error("Unknown step");
     }

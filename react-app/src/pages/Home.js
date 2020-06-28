@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Grid } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 import logo from "../logo.svg";
 
@@ -40,14 +41,18 @@ function Home() {
     >
       <img src={logo} alt="approxima logo" />
       <Grid item>
-        <Button variant="contained" color="secondary" size="large">
-          Login
-        </Button>
+        <Link to="/login">
+          <Button variant="contained" color="secondary" size="large">
+            Login
+          </Button>
+        </Link>
       </Grid>
       <Grid item>
-        <Button variant="contained" color="secondary" size="large">
-          Cadastre-se
-        </Button>
+        <Link to="/cadastro">
+          <Button variant="contained" color="secondary" size="large">
+            Cadastre-se
+          </Button>
+        </Link>
       </Grid>
     </Grid>
   );

@@ -15,8 +15,8 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Pages.Home} />
-          <Route path="/entrar" component={Pages.Login} />
-          <Route path="/cadastrar" component={Pages.Register} />
+          <Route path="/login" component={Pages.Login} />
+          <Route path="/cadastro" component={Pages.Register} />
           <Redirect to="/" />
         </Switch>
       </BrowserRouter>
